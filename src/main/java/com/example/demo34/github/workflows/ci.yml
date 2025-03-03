@@ -1,0 +1,29 @@
+name: Java CI with Maven  # Tên workflow
+
+on:
+  push:
+    branches:
+      - main  # Chạy khi có code đẩy lên nhánh main
+  pull_request:
+    branches:
+      - main  # Chạy khi có pull request vào nhánh main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Chạy trên máy ảo Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Lấy code từ GitHub
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'  # Cài đặt Java 17
+
+      - name: Build with Maven
+        run: mvn clean install  # Biên dịch project
+
+      - name: Run tests
+        run: mvn test  # Chạy kiểm thử tự động
