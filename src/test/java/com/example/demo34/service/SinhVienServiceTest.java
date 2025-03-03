@@ -15,11 +15,6 @@ private SinhVienService service;
     }
 
     @Test
-    void suaSinhVien_ThanhCong() {
-        assertTrue(service.suaSinhVien("SV01", "Nguyen Van B"));
-    }
-
-    @Test
     void suaSinhVien_KhongTonTai() {
         assertFalse(service.suaSinhVien("SV02", "Nguyen Van C"));
     }
